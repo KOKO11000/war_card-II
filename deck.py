@@ -92,5 +92,16 @@ def play_round(player1: dict, player2: dict) -> None:
     elif (result_compare == "p2"):
         player2["won_pile"].append(p2_card)
         player2["won_pile"].append(p1_card)
+    print(result_compare, "win this round")
 
 
+
+def log_return_winner(p1_won_pile:list,p2_won_pile:list):
+    len_p1 = len(p1_won_pile)
+    len_p2 = len(p2_won_pile)
+    if (len_p1 > len_p2):
+        pass
+if (__name__ == "__main__"):
+    game_dict = init_game()
+    while(len(game_dict["player1"]["hand"])>0 and len(game_dict["player1"]["hand"])>0 ):
+        play_round(game_dict["player1"],game_dict["player2"])

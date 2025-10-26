@@ -27,7 +27,7 @@ def create_card(rank:str,suite:str) -> dict:
 
 
 def compare_cards(p1_card:dict, p2_card:dict) -> str:
-    if ("value" not in p1 or "value" not in p2):
+    if ("value" not in p1_card or "value" not in p2_card):
         return None
     p1 = p1_card["value"]
     p2 = p2_card["value"]
@@ -50,17 +50,16 @@ def create_deck() -> list[dict]:
 
 def shuffle(deck:list[dict]) -> list[dict]:
     for i in range(1000):
-        while True:
-
-            index1 = random.randint(0,len(deck))
-            index2 = random.randint(0,len(deck))
+        while(True):
+            index1 = random.randint(0,len(deck) - 1)
+            index2 = random.randint(0,len(deck) - 1)
             if(index1 != index2):
                 break
             tmp_card = deck[index2]
             deck[index2] = deck[index1]
             deck[index1] = tmp_card
     return deck
-print(shuffle(create_deck()))
+
 
 def create_player(name:str = "AI") -> dict:
     return {
@@ -95,13 +94,19 @@ def play_round(player1: dict, player2: dict) -> None:
     print(result_compare, "win this round")
 
 
-
-def log_return_winner(p1_won_pile:list,p2_won_pile:list):
+def log_winner(p1_won_pile:list,p2_won_pile:list):
     len_p1 = len(p1_won_pile)
     len_p2 = len(p2_won_pile)
     if (len_p1 > len_p2):
-        pass
+        print("p1 the winner")
+    elif (len_p1 < len_p2):
+        print("p2 the winner")
+    else:
+        print("Equal!")
+
+
 if (__name__ == "__main__"):
     game_dict = init_game()
-    while(len(game_dict["player1"]["hand"])>0 and len(game_dict["player1"]["hand"])>0 ):
-        play_round(game_dict["player1"],game_dict["player2"])
+    while(len(game_dict["player1"]["hand"]) > 0 and len(game_dict["player2"]["hand"]) > 0 ):
+        play_round(game_dict["player1"], game_dict["player2"])
+    log_winner(game_dict["player1"]["won_pile"], game_dict["player2"]["won_pile"])

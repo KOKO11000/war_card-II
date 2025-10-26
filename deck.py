@@ -27,7 +27,15 @@ def create_card(rank:str,suite:str) -> dict:
 
 
 def compare_cards(p1_card:dict, p2_card:dict) -> str:
-    pass
+    p1 = p1_card
+    p2 = p2_card
+
+    if p1 > p2:
+        return "p1"
+    elif p2 > p1:
+        return "p2"
+    elif p1 == p2:
+        return "WAR"
 def create_deck() -> list[dict]:
     pass
 def shuffle(deck:list[dict]) -> list[dict]:

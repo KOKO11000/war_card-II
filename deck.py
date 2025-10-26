@@ -1,7 +1,21 @@
 optional_suitses=["H","C","D","S"] 
+ranks = {
+        "2":2,
+        "3":3,
+        "4":4,
+        "5":5,
+        "6":6,
+        "7":7,
+        "8":8,
+        "9":9,
+        "10":10,
+        "J":11,
+        "Q":12,
+        "K":13,
+        "A":14,
+    }
 def create_card(rank:str,suite:str) -> dict:
     ranks = {
-        "1":1,
         "2":2,
         "3":3,
         "4":4,
@@ -40,6 +54,13 @@ def compare_cards(p1_card:dict, p2_card:dict) -> str:
     
 
 def create_deck() -> list[dict]:
-    pass
+    full_deck = []
+    for i in ranks:
+        for j in optional_suitses:
+            full_deck.append(create_card(i, j))
+    return full_deck
+print(create_deck())
+
+
 def shuffle(deck:list[dict]) -> list[dict]:
     pass

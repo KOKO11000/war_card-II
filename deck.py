@@ -69,3 +69,16 @@ def create_player(name:str) -> dict:
         "won_pile": []
     }
 
+def init_game() -> dict:
+    player1 = create_player("Netanel")
+    player2 = create_player()
+    deck = create_deck()
+    shuffle(deck)
+    player1["hand"] = deck[:26]
+    player2["hand"] = deck[26:]
+    return {
+        "deck":deck,
+        "player1": player1,
+        "player2": player2
+    }
+    
